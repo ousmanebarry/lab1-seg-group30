@@ -15,7 +15,7 @@ import javax.script.ScriptException;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btn_clear, btn_plus, btn_equal, btn_mult, btn_div, btn_min;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btn_clear, btn_plus, btn_equal, btn_mult, btn_div, btn_min, btn_dec;
     TextView text_display;
 
     // This is to evaluate the math expression
@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_mult = (Button) findViewById(R.id.button12);
         btn_div = (Button) findViewById(R.id.button16);
         btn_min = (Button) findViewById(R.id.button8);
+        btn_dec = (Button) findViewById(R.id.btn_dot);
 
         btn_equal = (Button) findViewById(R.id.btn_equal);
         btn_clear = (Button) findViewById(R.id.btn_clear);
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_plus.setOnClickListener(this);
         btn_equal.setOnClickListener(this);
         btn_clear.setOnClickListener(this);
+        btn_dec.setOnClickListener(this);
     }
 
     @Override
@@ -126,6 +128,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button8:
                 addNumber("-");
+                break;
+            case R.id.btn_dot:
+                addNumber(".");
                 break;
 
         }
