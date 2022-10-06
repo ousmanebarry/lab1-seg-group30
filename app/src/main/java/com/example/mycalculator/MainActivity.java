@@ -82,38 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn3:
                 addNumber("3");
                 break;
-            case R.id.btn4:
-                addNumber("4");
-                break;
-            case R.id.btn5:
-                addNumber("5");
-                break;
-            case R.id.btn6:
-                addNumber("6");
-                break;
-            case R.id.btn7:
-                addNumber("7");
-                break;
-            case R.id.btn8:
-                addNumber("8");
-                break;
-            case R.id.btn9:
-                addNumber("9");
-                break;
-            case R.id.btn0:
-                addNumber("0");
-                break;
             case R.id.btn_plus:
                 addNumber("+");
-                break;
-            case R.id.btn_mult:
-                addNumber("*");
-                break;
-            case R.id.btn_min:
-                addNumber("-");
-                break;
-            case R.id.btn_div:
-                addNumber("/");
                 break;
             case R.id.btn_equal:
                 String result = null;
@@ -127,6 +97,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_clear:
                 clear_display();
                 break;
+            case R.id.button5:
+                addNumber("4");
+                break;
+            case R.id.button6:
+                addNumber("5");
+                break;
+            case R.id.button7:
+                addNumber("6");
+                break;
+            case R.id.button9:
+                addNumber("7");
+                break;
+            case R.id.button10:
+                addNumber("8");
+                break;
+            case R.id.button11:
+                addNumber("9");
+                break;
+            case R.id.btn0:
+                addNumber("0");
+                break;
+            case R.id.button12:
+                addNumber("*");
+                break;
+            case R.id.button16:
+                addNumber("/");
+                break;
+            case R.id.button8:
+                addNumber("-");
+                break;
+
         }
     }
 
