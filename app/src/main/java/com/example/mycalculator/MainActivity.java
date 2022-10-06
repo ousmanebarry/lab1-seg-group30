@@ -15,7 +15,7 @@ import javax.script.ScriptException;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btn1, btn2, btn_clear, btn_plus, btn_equal;
+    Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btn_clear, btn_plus, btn_equal;
     TextView text_display;
 
     // This is to evaluate the math expression
@@ -30,7 +30,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
+        btn3 = (Button) findViewById(R.id.btn3);
+        btn4 = (Button) findViewById(R.id.button5);
+        btn5 = (Button) findViewById(R.id.button6);
+        btn6 = (Button) findViewById(R.id.button7);
+        btn7 = (Button) findViewById(R.id.button9);
+        btn8 = (Button) findViewById(R.id.button10);
+        btn9 = (Button) findViewById(R.id.button11);
+        btn0 = (Button) findViewById(R.id.btn0);
+
         btn_plus = (Button) findViewById(R.id.btn_plus);
+        btn_mult = (Button) findViewById(R.id.button12);
+        btn_div = (Button) findViewById(R.id.button16);
+        btn_min = (Button) findViewById(R.id.button8);
+
         btn_equal = (Button) findViewById(R.id.btn_equal);
         btn_clear = (Button) findViewById(R.id.btn_clear);
         text_display = (TextView) findViewById(R.id.textview_input_display);
