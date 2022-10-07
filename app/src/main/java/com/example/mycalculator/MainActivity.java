@@ -126,8 +126,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_equal:
                 String result = null;
                 try {
-                    result = evaluate(text_display.getText().toString());
-                    text_display.setText(result);
+                    String text_input = text_display.getText().toString();
+
+                    if (text_input != "") {
+                        result = evaluate(text_input);
+                        text_display.setText(result);
+                    } else {
+                        text_display.setText("");
+                    }
+
                 } catch (ScriptException e) {
                     text_display.setText("Error");
                 }
