@@ -84,21 +84,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn3:
                 addNumber("3");
                 break;
-            case R.id.btn_plus:
-                addNumber("+");
-                break;
-            case R.id.btn_equal:
-                String result = null;
-                try {
-                    result = evaluate(text_display.getText().toString());
-                    text_display.setText(result);
-                } catch (ScriptException e) {
-                    text_display.setText("Error");
-                }
-                break;
-            case R.id.btn_clear:
-                clear_display();
-                break;
             case R.id.button5:
                 addNumber("4");
                 break;
@@ -120,19 +105,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn0:
                 addNumber("0");
                 break;
+            case R.id.btn_plus:
+                addNumber("+");
+                break;
+            case R.id.button8:
+                addNumber("-");
+                break;
             case R.id.button12:
                 addNumber("*");
                 break;
             case R.id.button16:
                 addNumber("/");
                 break;
-            case R.id.button8:
-                addNumber("-");
-                break;
             case R.id.btn_dot:
                 addNumber(".");
                 break;
-
+            case R.id.btn_clear:
+                clear_display();
+                break;
+            case R.id.btn_equal:
+                String result = null;
+                try {
+                    result = evaluate(text_display.getText().toString());
+                    text_display.setText(result);
+                } catch (ScriptException e) {
+                    text_display.setText("Error");
+                }
+                break;
         }
     }
 
