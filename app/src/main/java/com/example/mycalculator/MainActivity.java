@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (ScriptException e) {
                     text_display.setText("Error");
                 } catch (NumberFormatException e) { //for divisions by 0
-                    text_display.setText("Error!");
+                    text_display.setText("Error");
                 }
                 break;
         }
