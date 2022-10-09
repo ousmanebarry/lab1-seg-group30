@@ -17,6 +17,9 @@ import javax.script.ScriptException;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btn_clear, btn_plus, btn_equal, btn_mult, btn_div, btn_min, btn_dec;
     TextView text_display;
+    //keeps track of whether equals was the last button pressed
+    //will automatically clear screen after a result unless another operation button is pressed
+    boolean pressedEquals;
 
     // This is to evaluate the math expression
     ScriptEngine engine;
@@ -25,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        pressedEquals = false;
 
         engine = new ScriptEngineManager().getEngineByName("rhino");
 
@@ -74,35 +79,46 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
             case R.id.btn1:
+                if(pressedEquals) clear_display();
                 addNumber("1");
                 break;
             case R.id.btn2:
+                if(pressedEquals) clear_display();
                 addNumber("2");
                 break;
             case R.id.btn3:
+                if(pressedEquals) clear_display();
                 addNumber("3");
                 break;
             case R.id.button5:
+                if(pressedEquals) clear_display();
                 addNumber("4");
                 break;
             case R.id.button6:
+                if(pressedEquals) clear_display();
                 addNumber("5");
                 break;
             case R.id.button7:
+                if(pressedEquals) clear_display();
                 addNumber("6");
                 break;
             case R.id.button9:
+                if(pressedEquals) clear_display();
                 addNumber("7");
                 break;
             case R.id.button10:
+                if(pressedEquals) clear_display();
                 addNumber("8");
                 break;
             case R.id.button11:
+                if(pressedEquals) clear_display();
                 addNumber("9");
                 break;
             case R.id.btn0:
+                if(pressedEquals) clear_display();
                 addNumber("0");
                 break;
             case R.id.btn_plus:
@@ -125,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_equal:
                 String result = null;
+                pressedEquals = true;
                 try {
                     String text_input = text_display.getText().toString();
 
@@ -137,15 +154,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 } catch (ScriptException e) {
                     text_display.setText("Error");
+                } catch (NumberFormatException e) { //for divisions by 0
+                    text_display.setText("Error!");
                 }
                 break;
+        }
+        if(v.getId() != R.id.btn_equal){
+            pressedEquals = false;
         }
     }
 
     private String evaluate(String expression) throws ScriptException {
         String result = engine.eval(expression).toString();
         BigDecimal decimal = new BigDecimal(result);
-        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString().matches("[0-9]+(\\.0*)?$") ? Integer.toString(decimal.intValue()) : decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
     }
 
     private void addNumber(String number) {
@@ -153,6 +175,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void clear_display() {
+
         text_display.setText("");
+
     }
 }
