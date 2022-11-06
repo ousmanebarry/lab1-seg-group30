@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     boolean pressedEquals;
 
     // This is to evaluate the math expression
-    ScriptEngine engine;
+    Evaluate evaluate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         pressedEquals = false;
 
-        engine = new ScriptEngineManager().getEngineByName("rhino");
+        evaluate = new Evaluate();
 
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
@@ -165,8 +165,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private String evaluate(String expression) throws ScriptException {
-        String result = engine.eval(expression).toString();
-        BigDecimal decimal = new BigDecimal(result);
+        BigDecimal decimal = evaluate.evaluate(expression);
         return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString().matches("[0-9]+(\\.0*)?$") ? Integer.toString(decimal.intValue()) : decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
     }
 
