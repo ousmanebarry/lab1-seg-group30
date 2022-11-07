@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String evaluate(String expression) throws ScriptException {
         BigDecimal decimal = evaluate.evaluate(expression);
-        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString().matches("[-]?[0-9]+(\\.0*)?$") ? Integer.toString(decimal.intValue()) : decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+        return evaluate.rmExcessDecimals(decimal);
     }
 
     private void addNumber(String number) {

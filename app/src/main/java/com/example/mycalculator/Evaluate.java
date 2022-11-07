@@ -17,4 +17,13 @@ public class Evaluate {
         String result = engine.eval(expression).toString();
         return new BigDecimal(result);
     }
+
+    public String rmExcessDecimals(BigDecimal decimal) {
+        String decimalStr = decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+
+        if (decimalStr.matches("[-]?[0-9]+(\\.0*)?$")) {
+            return Integer.toString(decimal.intValue());
+        }
+        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+    }
 }
