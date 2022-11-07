@@ -13,6 +13,6 @@ public class EvaluateTest {
         Evaluate e = new Evaluate();
         double actual = e.evaluate("2+2").doubleValue();
         double expected = 4.0;
-        assertEquals("We have an error, values dont match", expected, actual, 0.0001);
+        assertEquals("We have an error, values don't match", expected, actual, 0.0001);
     }
 }

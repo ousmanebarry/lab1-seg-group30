@@ -9,8 +9,6 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
 
@@ -166,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private String evaluate(String expression) throws ScriptException {
         BigDecimal decimal = evaluate.evaluate(expression);
-        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString().matches("[0-9]+(\\.0*)?$") ? Integer.toString(decimal.intValue()) : decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
+        return decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString().matches("[-]?[0-9]+(\\.0*)?$") ? Integer.toString(decimal.intValue()) : decimal.setScale(2, BigDecimal.ROUND_HALF_UP).toPlainString();
     }
 
     private void addNumber(String number) {
@@ -174,8 +172,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void clear_display() {
-
         text_display.setText("");
-
     }
 }
